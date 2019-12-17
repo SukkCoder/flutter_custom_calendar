@@ -232,6 +232,9 @@ class ItemContainerState extends State<ItemContainer> {
           //多选也可以弄这些单选的代码
           calendarProvider.selectDateModel = dateModel;
         } else {
+          // 单选的bug，如果选中的是已经被选中的
+          if (calendarProvider.selectDateModel == dateModel) return;
+
           calendarProvider.selectDateModel = dateModel;
           configuration.calendarSelect(dateModel);
 
