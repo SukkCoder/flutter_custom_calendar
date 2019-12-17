@@ -202,6 +202,9 @@ class ItemContainerState extends State<ItemContainer> {
             TAG: this.runtimeType,
             message: "GestureDetector onTap: $dateModel}");
 
+        // 不是当前月不支持点击
+        if (!dateModel.isCurrentMonth) return;
+
         //范围外不可点击
         if (!dateModel.isInRange) {
           //多选回调
