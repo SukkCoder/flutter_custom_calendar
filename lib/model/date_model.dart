@@ -47,7 +47,8 @@ class DateModel {
   String get traditionFestival =>
       LunarUtil.getTraditionFestival(lunarYear, lunarMonth, lunarDay);
 
-  bool isCurrentMonth; //是否是当前月份
+  /// 是否属于当前显示的月份
+  bool isCurrentMonth;
 
   Object extraData; //自定义的额外数据
 

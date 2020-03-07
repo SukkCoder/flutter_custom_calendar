@@ -9,6 +9,8 @@ import 'package:flutter_custom_calendar/utils/LogUtil.dart';
 import 'package:flutter_custom_calendar/utils/date_util.dart';
 import 'package:provider/provider.dart';
 
+import '../model/date_model.dart';
+
 /**
  * 月视图，显示整个月的日子
  */
@@ -202,8 +204,11 @@ class ItemContainerState extends State<ItemContainer> {
             TAG: this.runtimeType,
             message: "GestureDetector onTap: $dateModel}");
 
-        // 不是当前月不支持点击
+        // 不是当前显示的月份不支持点击
         if (!dateModel.isCurrentMonth) return;
+
+        // 今天之前的时间不能点击
+        if (dateModel.isBefore(DateModel.fromDateTime(DateTime.now()))) return;
 
         //范围外不可点击
         if (!dateModel.isInRange) {
